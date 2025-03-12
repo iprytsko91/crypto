@@ -1,0 +1,35 @@
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+  }
+
+  .chart-visualisation {
+    height: 300px;
+    width: 400px;
+    background: red;
+  }
+
+  .toggle-buttons {
+    display: flex;
+    justify-content: center;
+  }
+
+  .chart-settings {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .interval-form-group {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+}

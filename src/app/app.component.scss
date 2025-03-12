@@ -1,0 +1,11 @@
+header {
+  text-transform: uppercase;
+  border: 1px solid grey;
+}
+
+main {
+  padding: 40px 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
