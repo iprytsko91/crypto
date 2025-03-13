@@ -2,11 +2,9 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
-import { Interval } from "../models/interval.model";
+import { CryptoCurrency, Currency, Interval, Ticker } from "../models";
 import { BackendUrl } from "../constants";
-import { Currency } from "../models/currency.enum";
-import { CryptoCurrency } from "../models/crypto-currency.enum";
-import { Ticker } from "../models/ticker.model";
+
 
 @Injectable({
   providedIn: 'root'

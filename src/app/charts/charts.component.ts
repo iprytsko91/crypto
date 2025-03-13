@@ -1,15 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ChartComponent } from "../../shared/components/chart/chart.component";
-import { ChartCurrencies } from "../../shared/models/chart-currencies.model";
-import { CryptoCurrency } from "../../shared/models/crypto-currency.enum";
-import { Currency } from "../../shared/models/currency.enum";
 import { NgForOf } from "@angular/common";
+
+import { ChartCurrencies, CryptoCurrency, Currency } from "../../shared";
+import { ChartPresentationComponent } from "./chart-presentation/chart-presentation.component";
+
 
 @Component({
   selector: 'app-charts',
   standalone: true,
   imports: [
-    ChartComponent,
+    ChartPresentationComponent,
     NgForOf
   ],
   templateUrl: './charts.component.html',

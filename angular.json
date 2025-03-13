@@ -32,7 +32,11 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/rgraph/RGraph.svg.common.core.js",
+              "src/assets/rgraph/RGraph.svg.bar.js",
+              "src/assets/rgraph/RGraph.svg.line.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -68,7 +72,10 @@
               "buildTarget": "crypto:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "proxyConfig": "proxy.conf.json"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

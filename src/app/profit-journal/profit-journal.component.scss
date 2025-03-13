@@ -1,0 +1,17 @@
+.profit-journal-container {
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .table {
+    td {
+      &:last-child {
+        display: flex;
+        gap: 4px;
+      }
+    }
+  }
+}

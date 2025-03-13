@@ -1,3 +1,37 @@
 <div class="profit-journal-container">
-    <h2>Profit Journal</h2>
+    <div class="header">
+        <h2>Profit Journal</h2>
+        <button class="btn btn-primary" (click)="addLine()">Add Line</button>
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Bought</th>
+            <th scope="col">Profit</th>
+            <th scope="col">Time</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let country of countries; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>
+                <img
+                        [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag"
+                        [alt]="'The flag of ' + country.name"
+                        class="me-2"
+                        style="width: 20px"
+                />
+                {{ country.name }}
+            </td>
+            <td>{{ country.area | number }}</td>
+            <td>{{ country.population | number }}</td>
+            <td>
+                <button class="btn btn-outline-primary">Edit</button>
+                <button class="btn btn-outline-danger">Delete</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
