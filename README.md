@@ -22,3 +22,7 @@ To Run BE and FE separatelly:
 - Run `npm run start:java` for BE
 - Run `npm run start:angular` for FE
 
+Notes: 
+
+There some issues with Intervals of BE side. Checked variations: 1 is working for every entity, 5 is working for Minutes.
+
