@@ -1,6 +1,6 @@
 declare const RGraph: any;
 
-import { Ticker } from '../models/ticker.model';
+import { Ticker } from '../models';
 import { Chart } from './chart';
 
 export class LineChart extends Chart {

@@ -1,37 +1,87 @@
 <div class="profit-journal-container">
     <div class="header">
         <h2>Profit Journal</h2>
-        <button class="btn btn-primary" (click)="addLine()">Add Line</button>
+        <button class="btn btn-primary" (click)="addProfit()">Add Profit</button>
     </div>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Bought</th>
-            <th scope="col">Profit</th>
-            <th scope="col">Time</th>
-            <th scope="col"></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let country of countries; let i = index">
-            <th scope="row">{{ i + 1 }}</th>
-            <td>
-                <img
-                        [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag"
-                        [alt]="'The flag of ' + country.name"
-                        class="me-2"
-                        style="width: 20px"
-                />
-                {{ country.name }}
-            </td>
-            <td>{{ country.area | number }}</td>
-            <td>{{ country.population | number }}</td>
-            <td>
-                <button class="btn btn-outline-primary">Edit</button>
-                <button class="btn btn-outline-danger">Delete</button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="profits">
+        <div class="profit-item" *ngFor="let profit of profits$ | async">
+            <div class="name">
+                <h5>Name</h5>
+                <p>{{ profit.name }}</p>
+            </div>
+            <div class="periods">
+                <div class="periods-header">
+                    <h5>Periods</h5>
+                    <button class="btn btn-primary"
+                            [disabled]="isPendingNewProfitPeriod(profit)"
+                            (click)="addPeriod(profit)">Add Period
+                    </button>
+                </div>
+                <table *ngIf="profit.periods.length" class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Start</th>
+                        <th>End</th>
+                        <th>Factor</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let period of profit.periods">
+                        <ng-container *ngIf="editingProfitPeriod && editingProfitPeriodId === period.id;then editingTemplate;else viewTemplate">
+                        </ng-container>
+                        <ng-template #editingTemplate>
+                            <td>
+                                <input type="date" [(ngModel)]="editingProfitPeriod.start" class="form-control form-control-sm">
+                            </td>
+                            <td>
+                                <input type="date" [(ngModel)]="editingProfitPeriod.end" class="form-control form-control-sm">
+                            </td>
+                            <td>
+                                <input type="number" [(ngModel)]="editingProfitPeriod.factor" class="form-control form-control-sm">
+                            </td>
+                        </ng-template>
+                        <ng-template #viewTemplate>
+                            <td>{{ period.start | date:'dd.MM.yyyy' }}</td>
+                            <td>{{ period.end | date:'dd.MM.yyyy'}}</td>
+                            <td>{{ period.factor }}</td>
+                        </ng-template>
+
+                        <td class="profit-period-actions">
+                            <ng-container
+                                    *ngIf="editingProfitPeriodId === period.id;then editingActionsTemplate;else viewActionsTemplate">
+                            </ng-container>
+                            <ng-template #editingActionsTemplate>
+                                <button class="btn btn-sm btn-success"
+                                        (click)="saveProfitPeriodEdit(profit, editingProfitPeriod)">
+                                    Save
+                                </button>
+                                <button class="btn btn-sm btn-warning"
+                                        (click)="cancelProfitPeriodEdit(profit, period)">
+                                    Cancel
+                                </button>
+                            </ng-template>
+                            <ng-template #viewActionsTemplate>
+                                <button class="btn btn-sm btn-primary"
+                                        [disabled]="isPendingNewProfitPeriod(profit)"
+                                        (click)="startEditingProfitPeriod(period)">
+                                    Edit
+                                </button>
+                                <button class="btn btn-sm btn-danger"
+                                        [disabled]="isPendingNewProfitPeriod(profit)"
+                                        (click)="deleteProfitPeriod(profit.id, period)">
+                                    Delete
+                                </button>
+                            </ng-template>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="actions">
+                <button class="btn btn-outline-primary" (click)="editProfit(profit)">Edit</button>
+                <button class="btn btn-outline-danger" (click)="deleteProfit(profit)">Delete</button>
+            </div>
+        </div>
+    </div>
 </div>

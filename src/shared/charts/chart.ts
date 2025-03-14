@@ -9,6 +9,7 @@ export abstract class Chart {
 
   clear(containerId: string): void {
     const svg = document.getElementById(containerId);
+    
     if (svg) {
       RGraph.SVG.clear(svg);
     }

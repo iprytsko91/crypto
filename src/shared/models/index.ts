@@ -4,3 +4,4 @@ export * from './currency.enum';
 export * from './interval.model';
 export * from './profit.model';
 export * from './ticker.model';
+export * from './profit-period.model';
