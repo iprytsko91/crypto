@@ -19,6 +19,6 @@ Run Chrome Browser with disabled web security from termilal MacOS `open /Applica
 Navigate to `http://localhost:4200/`
 
 To Run BE and FE separatelly: 
-Run `npm run start:java` for BE
-Run `npm run start:angular` for FE
+- Run `npm run start:java` for BE
+- Run `npm run start:angular` for FE
 
