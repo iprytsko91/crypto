@@ -13,7 +13,7 @@ Run `npm i`
 
 Run `npm run start:all` to start BE with FE
 
-There is issues with CORS, easiest way to try app is:
+There are issues with CORS, easiest way to try app is:
 Run Chrome Browser with disabled web security from termilal MacOS `open /Applications/Google\ Chrome.app --args --disable-web-security --user-data-dir="/tmp/chrome_dev"`
 
 Navigate to `http://localhost:4200/`
